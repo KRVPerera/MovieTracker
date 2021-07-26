@@ -24,9 +24,9 @@ service /movies on new http:Listener(8082) {
         http:Client tmdb = check new (base_search_url);
         var lit = "/3/search/movie?api_key=" + api_key + "&language=en-US&query=" + query;
         TMDBResultPages data = check tmdb->get(lit);
-        log:printDebug("total_pages : " + data.total_pages.toBalString());
-        log:printDebug("page : " + data.page.toBalString());
-        log:printDebug("total results : " + data.total_results.toBalString());
+        log:printInfo("total_pages : " + data.total_pages.toBalString());
+        log:printInfo("page : " + data.page.toBalString());
+        log:printInfo("total results : " + data.total_results.toBalString());
         return data;
     }
 }
